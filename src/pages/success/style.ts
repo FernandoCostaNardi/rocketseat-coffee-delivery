@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 
 export const SuccessContainer = styled.div`
+  max-width: 90rem;
+  margin: 0 auto;
   margin-top: 5rem;
+  padding: 0 10rem;
 
   h1 {
     font-family: 'Baloo 2', sans-serif;

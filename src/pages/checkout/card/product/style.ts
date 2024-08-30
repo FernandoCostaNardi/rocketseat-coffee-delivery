@@ -1,0 +1,101 @@
+import styled from 'styled-components'
+import { typography } from '../../../../styles/themes/font'
+
+export const ProductContainer = styled.article`
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    'image detais detais price'
+    'image actions actions .';
+
+  padding: 0.25rem 0.5rem;
+
+  &:not(:first-child) {
+    margin: 1.5rem 0;
+  }
+
+  &:first-child {
+    margin-bottom: 1.5rem;
+  }
+
+  img {
+    grid-area: image;
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1.25rem;
+  }
+`
+
+export const Title = styled.span`
+  grid-area: detais;
+  justify-self: left;
+  ${typography.fonts.textM}
+  font-weight: regular;
+  color: ${(props) => props.theme['base-subtitle']};
+`
+
+export const Price = styled.span`
+  grid-area: price;
+  justify-self: right;
+  ${typography.fonts.textM}
+  font-weight: 700;
+  color: ${(props) => props.theme['base-text']};
+`
+export const Actions = styled.div`
+  grid-area: actions;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row;
+`
+export const QuantityControl = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 4.5rem;
+  height: 2rem;
+  padding: 0.5rem 0.344rem;
+  margin-right: 0.5rem;
+  border-radius: 0.375rem;
+  background: ${(props) => props.theme['base-button']};
+`
+export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1rem;
+  height: 1rem;
+  border: none;
+  background: ${(props) => props.theme['base-button']};
+  color: ${(props) => props.theme.purple};
+`
+export const Quantity = styled.span`
+  ${typography.fonts.textM}
+  color: ${(props) => props.theme['base-title']};
+`
+export const RemoveButton = styled.button`
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  widht: 5.69rem;
+  height: 2rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.375rem;
+
+  ${typography.fonts.buttonM}
+  background: ${(props) => props.theme['base-button']};
+  color: ${(props) => props.theme['base-text']};
+
+  svg {
+    margin-right: 0.25rem;
+    color: ${(props) => props.theme.purple};
+  }
+`
+
+export const ProductSeparator = styled.hr`
+  width: 23rem;
+  border: none; /* Remove any default border */
+  border-top: 1px solid ${(props) => props.theme['base-button']}; /* Define the color and thickness of the line */
+`

@@ -6,7 +6,9 @@ export const HeaderContainer = styled.header`
   align-items: center;
   flex-direction: row;
 
-  height: 6.5rem;
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 2rem 10rem;
 
   nav {
     display: flex;

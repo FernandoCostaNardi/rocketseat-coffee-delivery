@@ -3,9 +3,8 @@ import styled from 'styled-components'
 export const OrderInfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: top;
 
-  padding-top: 2.5rem;
+  margin-top: 2.5rem;
 `
 
 export const OrderInfoDetails = styled.div`
@@ -51,7 +50,7 @@ export const OrderInfoDetails = styled.div`
     align-items: center;
     justify-content: left;
 
-    padding-bottom: 2rem;
+    margin-bottom: 2rem;
   }
 
   p,
@@ -89,4 +88,6 @@ export const OrderInfoIconMoney = styled(OrderInfoIcon)`
 export const OrderInfoIllustation = styled.div`
   width: 30.75rem;
   height: 18.31rem;
+
+  margin-top: -0.625rem;
 `

@@ -5,7 +5,6 @@ export const LocaleContainer = style.div`
     align-items: center;
     justify-content: center;
     
-
     width: 8.9375rem;
     height: 2.375rem;
     padding: 0.625rem 0.5rem;
