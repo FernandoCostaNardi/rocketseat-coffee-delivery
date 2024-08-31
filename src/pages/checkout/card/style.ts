@@ -14,6 +14,7 @@ export const InfoContainer = styled.div`
 
 export const InfoCard = styled.div`
   margin-top: 0.9375rem;
+
   max-height: 31.125rem;
   padding: 2.5rem;
   border-radius: 0.375rem 2.75rem;
@@ -53,4 +54,9 @@ export const InfoButton = styled.button`
   background: ${(props) => props.theme.yellow};
   color: ${(props) => props.theme.white};
   ${typography.fonts.buttonG}
+  cursor: pointer;
+
+  &:hover {
+    background: ${(props) => props.theme['yellow-dark']};
+  }
 `

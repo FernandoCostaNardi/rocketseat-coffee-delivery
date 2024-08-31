@@ -69,6 +69,10 @@ export const Button = styled.button`
   border: none;
   background: ${(props) => props.theme['base-button']};
   color: ${(props) => props.theme.purple};
+
+  &:hover {
+    color: ${(props) => props.theme['purple-dark']};
+  }
 `
 export const Quantity = styled.span`
   ${typography.fonts.textM}
@@ -83,10 +87,15 @@ export const RemoveButton = styled.button`
   padding: 0.5rem;
   border: none;
   border-radius: 0.375rem;
+  cursor: pointer;
 
   ${typography.fonts.buttonM}
   background: ${(props) => props.theme['base-button']};
   color: ${(props) => props.theme['base-text']};
+
+  &:hover {
+    background: ${(props) => props.theme['base-hover']};
+  }
 
   svg {
     margin-right: 0.25rem;
