@@ -39,6 +39,7 @@ export const BannerImage = styled.div`
 export const Subtitle = styled.span`
   grid-area: subtitle;
 
+  margin-top: 1rem;
   margin-bottom: 4.125rem;
 
   ${typography.fonts.textL}
