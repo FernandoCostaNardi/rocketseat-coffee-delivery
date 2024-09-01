@@ -1,13 +1,15 @@
 import { ShoppingCart } from 'phosphor-react'
-import { NavLink } from 'react-router-dom'
 import { ShoppingCardContainer } from './style'
 
-export function ShoppingCard() {
+interface ShoppingCardProps {
+  kind: string
+  quantity?: number
+}
+
+export function ShoppingCard({ kind }: ShoppingCardProps) {
   return (
-    <ShoppingCardContainer>
-      <NavLink to="/checkout" title="Checkout">
-        <ShoppingCart size={24} weight="fill" />
-      </NavLink>
+    <ShoppingCardContainer data-state={kind}>
+      <ShoppingCart size={24} weight="fill" />
     </ShoppingCardContainer>
   )
 }

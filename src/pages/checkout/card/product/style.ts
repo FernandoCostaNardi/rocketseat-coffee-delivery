@@ -49,35 +49,7 @@ export const Actions = styled.div`
   align-items: center;
   flex-direction: row;
 `
-export const QuantityControl = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 4.5rem;
-  height: 2rem;
-  padding: 0.5rem 0.344rem;
-  margin-right: 0.5rem;
-  border-radius: 0.375rem;
-  background: ${(props) => props.theme['base-button']};
-`
-export const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1rem;
-  height: 1rem;
-  border: none;
-  background: ${(props) => props.theme['base-button']};
-  color: ${(props) => props.theme.purple};
 
-  &:hover {
-    color: ${(props) => props.theme['purple-dark']};
-  }
-`
-export const Quantity = styled.span`
-  ${typography.fonts.textM}
-  color: ${(props) => props.theme['base-title']};
-`
 export const RemoveButton = styled.button`
   display: flex;
   justify-content: left;
@@ -88,6 +60,7 @@ export const RemoveButton = styled.button`
   border: none;
   border-radius: 0.375rem;
   cursor: pointer;
+  margin-left: 0.5rem;
 
   ${typography.fonts.buttonM}
   background: ${(props) => props.theme['base-button']};

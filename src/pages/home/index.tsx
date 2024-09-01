@@ -1,13 +1,14 @@
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
-
 import { HomeContainer, HomeProductContainer } from './style'
 import { Banner } from './banner'
+import { Items } from './Itens'
 
 export function Home() {
   return (
     <HomeContainer>
       <Banner />
-      <HomeProductContainer>bom dia</HomeProductContainer>
+      <HomeProductContainer>
+        <Items />
+      </HomeProductContainer>
     </HomeContainer>
   )
 }
