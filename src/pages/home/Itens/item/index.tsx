@@ -11,17 +11,32 @@ import {
 } from './style'
 import { InputNumber } from '../../../../components/form/input-number'
 import { ShoppingCard } from '../../../../components/header/shopping-card'
+import { Product } from '../../../../interfaces/Product'
+import { useContext, useState } from 'react'
+import { CartContext } from '../../../../context/CartContextProvider'
 
-interface ProductProps {
-  id: number
-  image: string
-  tags: string[]
-  title: string
-  subTitle: string
-  price: string
+interface ItemProps {
+  product: Product
 }
 
-export function Item({ product }: { product: ProductProps }) {
+export function Item({ product }: ItemProps) {
+  const [quantity, setquantity] = useState(1)
+  const { addItem } = useContext(CartContext)
+
+  function incrementQuantity() {
+    setquantity((state) => state + 1)
+  }
+
+  function decrementQuantity() {
+    if (quantity > 1) {
+      setquantity((state) => state - 1)
+    }
+  }
+
+  function handleAddProduct() {
+    addItem({ productId: product.id, quantity })
+  }
+
   return (
     <ItemContainer>
       <ImageItem>
@@ -42,9 +57,18 @@ export function Item({ product }: { product: ProductProps }) {
           <p>{product.price}</p>
         </Price>
         <InputNumberContainer>
-          <InputNumber height={38} />
+          <InputNumber
+            height={38}
+            quantity={quantity}
+            incrementQuantity={incrementQuantity}
+            decrementQuantity={decrementQuantity}
+          />
         </InputNumberContainer>
-        <ShoppingCard kind="purple" />
+        <ShoppingCard
+          kind="purple"
+          productId={product.id}
+          handleAddProduct={handleAddProduct}
+        />
       </CartContainer>
     </ItemContainer>
   )

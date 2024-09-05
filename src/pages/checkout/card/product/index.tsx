@@ -1,5 +1,5 @@
 import { Trash } from 'phosphor-react'
-import Expresso from '../../../../assets/expresso.svg'
+import { Product as ProductInterface } from './../../../../interfaces/Product'
 import {
   Actions,
   Price,
@@ -9,16 +9,41 @@ import {
   Title,
 } from './style'
 import { InputNumber } from '../../../../components/form/input-number'
+import { useContext } from 'react'
+import { CartContext } from '../../../../context/CartContextProvider'
 
-export function Product() {
+interface ProductProps {
+  product: ProductInterface
+  quantity: number
+}
+
+export function Product({ product, quantity }: ProductProps) {
+  const { IncrementItemQuantity, DecrementItemQuantity } =
+    useContext(CartContext)
+
+  function incrementQuantity() {
+    IncrementItemQuantity(product.id)
+  }
+
+  function decrementQuantity() {
+    DecrementItemQuantity(product.id)
+  }
+
   return (
     <>
       <ProductContainer>
-        <img src={Expresso} alt="" />
-        <Title>Expresso Tradicional</Title>
-        <Price>R$ 9,90</Price>
+        <img src={product.image} alt="" />
+        <Title>{product.title}</Title>
+        <Price>
+          R$<span>{product.price}</span>
+        </Price>
         <Actions>
-          <InputNumber height={32} />
+          <InputNumber
+            height={32}
+            quantity={quantity}
+            decrementQuantity={decrementQuantity}
+            incrementQuantity={incrementQuantity}
+          />
           <RemoveButton>
             <Trash size={16} /> REMOVER
           </RemoveButton>

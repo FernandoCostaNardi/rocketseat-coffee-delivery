@@ -1,18 +1,11 @@
+import productData from '../../../../products.json'
+import { Product } from '../../../interfaces/Product'
 import { Item } from './item'
 import { ItemsContainer, ItemsTitle, ListItemContainer } from './style'
 
-interface ListProducts {
-  products: {
-    id: number
-    image: string
-    tags: string[]
-    title: string
-    subTitle: string
-    price: string
-  }[]
-}
+export function Items() {
+  const products: Product[] = productData
 
-export function Items({ products }: ListProducts) {
   return (
     <ItemsContainer>
       <ItemsTitle>Nossos cafés</ItemsTitle>

@@ -7,6 +7,7 @@ export const ShoppingCardContainer = styled.div`
   width: 2.375rem;
   height: 2.375rem;
   border-radius: 0.375rem;
+  cursor: pointer;
 
   &[data-state='yellow'] {
     color: ${(props) => props.theme['yellow-dark']};

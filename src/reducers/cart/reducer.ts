@@ -1,0 +1,42 @@
+import { produce } from 'immer'
+import { CartState } from './../../interfaces/Cart'
+import { ActionTypes } from './../../reducers/cart/actions'
+
+export function cartReducer(state: CartState, action: any) {
+  switch (action.type) {
+    case ActionTypes.ADD_PRODUCT:
+      return produce(state, (draft) => {
+        const existentItem = draft.items.find(
+          (item) => item.productId === action.payload.item.productId
+        )
+
+        if (existentItem) {
+          existentItem.quantity += action.payload.item.quantity
+        } else {
+          draft.items.push(action.payload.item)
+        }
+      })
+    case ActionTypes.INCREMENT_ITEM_QUANTITY:
+      return produce(state, (draft) => {
+        const item = draft.items.find(
+          (item) => item.productId === action.payload.itemId
+        )
+
+        if (item) {
+          item.quantity += 1
+        }
+      })
+    case ActionTypes.DECREMENT_ITEM_QUANTITY:
+      return produce(state, (draft) => {
+        const item = draft.items.find(
+          (item) => item.productId === action.payload.itemId
+        )
+
+        if (item) {
+          item.quantity -= 1
+        }
+      })
+    default:
+      return state
+  }
+}

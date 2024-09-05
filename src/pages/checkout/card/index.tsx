@@ -1,14 +1,42 @@
 import { Product } from './product'
+import productData from '../../../../products.json'
 import { InfoButton, InfoCard, InfoContainer, InfoTable } from './style'
+import { Item } from '../../../interfaces/Item'
+import { Product as ProductInterface } from '../../../interfaces/Product'
 
-export function Card() {
+interface CartProps {
+  items: Item[]
+}
+
+export function Card({ items }: CartProps) {
+  const listProducts: ProductInterface[] = productData
+  const coffeesInCart = items.map((item) => {
+    const coffeeInfo = listProducts.find(
+      (product) => product.id === item.productId
+    )
+
+    if (!coffeeInfo) {
+      throw new Error('Invalid coffee.')
+    }
+
+    return {
+      ...coffeeInfo,
+      quantity: item.quantity,
+    }
+  })
+
   return (
     <InfoContainer>
       <h2>Café Selecionados</h2>
       <InfoCard>
         <div>
-          <Product />
-          <Product />
+          {coffeesInCart.map((product) => (
+            <Product
+              key={product.id}
+              product={product}
+              quantity={product.quantity}
+            />
+          ))}
         </div>
 
         <InfoTable>
@@ -16,11 +44,15 @@ export function Card() {
             <tbody>
               <tr>
                 <td>Total de itens</td>
-                <td>R$29,70</td>
+                <td>
+                  R$<span>9,00</span>
+                </td>
               </tr>
               <tr>
                 <td>Entrega</td>
-                <td>R$3,50</td>
+                <td>
+                  R$<span>5,00</span>
+                </td>
               </tr>
             </tbody>
             <tfoot>
@@ -29,7 +61,9 @@ export function Card() {
                   <h2>Total</h2>
                 </td>
                 <td>
-                  <h2>R$33,20</h2>
+                  <h2>
+                    R$<span>19,00</span>
+                  </h2>
                 </td>
               </tr>
             </tfoot>
