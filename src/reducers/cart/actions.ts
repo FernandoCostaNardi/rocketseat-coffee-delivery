@@ -4,6 +4,7 @@ export enum ActionTypes {
   ADD_PRODUCT = 'ADD_PRODUCT',
   INCREMENT_ITEM_QUANTITY = 'INCREMENT_ITEM_QUANTITY',
   DECREMENT_ITEM_QUANTITY = 'DECREMENT_ITEM_QUANTITY',
+  EXCLUDE_ITEM = 'EXCLUDE_ITEM',
 }
 
 export function AddProductAction(item: Item) {
@@ -49,6 +50,22 @@ export function DecrementItemQuantityAction(itemId: number) {
 
 export type DecrementItemQuantityType = {
   type: typeof ActionTypes.DECREMENT_ITEM_QUANTITY
+  payload: {
+    itemId: number
+  }
+}
+
+export function ExcludeItemAction(itemId: number) {
+  return {
+    type: ActionTypes.EXCLUDE_ITEM,
+    payload: {
+      itemId,
+    },
+  }
+}
+
+export type ExcludeItemType = {
+  type: typeof ActionTypes.EXCLUDE_ITEM
   payload: {
     itemId: number
   }

@@ -8,29 +8,35 @@ interface CartProps {
   items: Item[]
 }
 
+const DELIVERY_TAX = 5
+const listProducts: ProductInterface[] = productData
+
 export function Card({ items }: CartProps) {
-  const listProducts: ProductInterface[] = productData
-  const coffeesInCart = items.map((item) => {
-    const coffeeInfo = listProducts.find(
+  const itemsInCart = items.map((item) => {
+    const itemInfo = listProducts.find(
       (product) => product.id === item.productId
     )
 
-    if (!coffeeInfo) {
+    if (!itemInfo) {
       throw new Error('Invalid coffee.')
     }
 
     return {
-      ...coffeeInfo,
+      ...itemInfo,
       quantity: item.quantity,
     }
   })
+
+  const totalItemsValue = itemsInCart.reduce((previousValue, currentItem) => {
+    return (previousValue += currentItem.price * currentItem.quantity)
+  }, 0)
 
   return (
     <InfoContainer>
       <h2>Café Selecionados</h2>
       <InfoCard>
         <div>
-          {coffeesInCart.map((product) => (
+          {itemsInCart.map((product) => (
             <Product
               key={product.id}
               product={product}
@@ -45,13 +51,19 @@ export function Card({ items }: CartProps) {
               <tr>
                 <td>Total de itens</td>
                 <td>
-                  R$<span>9,00</span>
+                  {new Intl.NumberFormat('pt-br', {
+                    currency: 'BRL',
+                    style: 'currency',
+                  }).format(totalItemsValue)}
                 </td>
               </tr>
               <tr>
                 <td>Entrega</td>
                 <td>
-                  R$<span>5,00</span>
+                  {new Intl.NumberFormat('pt-br', {
+                    currency: 'BRL',
+                    style: 'currency',
+                  }).format(DELIVERY_TAX)}
                 </td>
               </tr>
             </tbody>
@@ -62,7 +74,10 @@ export function Card({ items }: CartProps) {
                 </td>
                 <td>
                   <h2>
-                    R$<span>19,00</span>
+                    {new Intl.NumberFormat('pt-br', {
+                      currency: 'BRL',
+                      style: 'currency',
+                    }).format(totalItemsValue + DELIVERY_TAX)}
                   </h2>
                 </td>
               </tr>

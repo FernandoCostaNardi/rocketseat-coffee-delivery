@@ -4,5 +4,5 @@ export interface Product {
   tags: string[]
   title: string
   subTitle: string
-  price: string
+  price: number
 }

@@ -1,7 +1,7 @@
 export interface ProductCart {
   id: number
   title: string
-  price: string
+  price: number
   imageUrl: string
   quantity: number
 }

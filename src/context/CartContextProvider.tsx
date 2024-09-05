@@ -5,6 +5,7 @@ import {
   AddProductAction,
   IncrementItemQuantityAction,
   DecrementItemQuantityAction,
+  ExcludeItemAction,
 } from '../reducers/cart/actions'
 
 interface CartContextType {
@@ -12,6 +13,7 @@ interface CartContextType {
   addItem: (item: Item) => void
   IncrementItemQuantity: (itemId: number) => void
   DecrementItemQuantity: (itemId: number) => void
+  excludeItem: (itemId: number) => void
 }
 
 // Criando o contexto
@@ -52,6 +54,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(DecrementItemQuantityAction(itemId))
   }
 
+  function excludeItem(itemId: number) {
+    dispatch(ExcludeItemAction(itemId))
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -59,6 +65,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         addItem,
         IncrementItemQuantity,
         DecrementItemQuantity,
+        excludeItem,
       }}
     >
       {children}

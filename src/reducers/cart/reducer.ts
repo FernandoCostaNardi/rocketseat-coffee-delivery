@@ -36,6 +36,16 @@ export function cartReducer(state: CartState, action: any) {
           item.quantity -= 1
         }
       })
+    case ActionTypes.EXCLUDE_ITEM:
+      return produce(state, (draft) => {
+        const itemIndex = draft.items.findIndex(
+          (item) => item.productId === action.payload.itemId
+        )
+
+        if (itemIndex !== -1) {
+          draft.items.splice(itemIndex, 1)
+        }
+      })
     default:
       return state
   }

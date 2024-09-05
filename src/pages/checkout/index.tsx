@@ -7,7 +7,6 @@ import { CheckoutContainer } from './style'
 
 export function Checkout() {
   const { items } = useContext(CartContext)
-
   return (
     <CheckoutContainer>
       <Address />

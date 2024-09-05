@@ -18,7 +18,7 @@ interface ProductProps {
 }
 
 export function Product({ product, quantity }: ProductProps) {
-  const { IncrementItemQuantity, DecrementItemQuantity } =
+  const { IncrementItemQuantity, DecrementItemQuantity, excludeItem } =
     useContext(CartContext)
 
   function incrementQuantity() {
@@ -29,13 +29,20 @@ export function Product({ product, quantity }: ProductProps) {
     DecrementItemQuantity(product.id)
   }
 
+  function handleExcludeItem() {
+    excludeItem(product.id)
+  }
+
   return (
     <>
       <ProductContainer>
         <img src={product.image} alt="" />
         <Title>{product.title}</Title>
         <Price>
-          R$<span>{product.price}</span>
+          {new Intl.NumberFormat('pt-br', {
+            currency: 'BRL',
+            style: 'currency',
+          }).format(product.price * quantity)}
         </Price>
         <Actions>
           <InputNumber
@@ -45,7 +52,7 @@ export function Product({ product, quantity }: ProductProps) {
             incrementQuantity={incrementQuantity}
           />
           <RemoveButton>
-            <Trash size={16} /> REMOVER
+            <Trash size={16} onClick={handleExcludeItem} />
           </RemoveButton>
         </Actions>
       </ProductContainer>
