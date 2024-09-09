@@ -1,3 +1,4 @@
+import { Address } from '../../interfaces/Address'
 import { Item } from '../../interfaces/Item'
 
 export enum ActionTypes {
@@ -5,6 +6,8 @@ export enum ActionTypes {
   INCREMENT_ITEM_QUANTITY = 'INCREMENT_ITEM_QUANTITY',
   DECREMENT_ITEM_QUANTITY = 'DECREMENT_ITEM_QUANTITY',
   EXCLUDE_ITEM = 'EXCLUDE_ITEM',
+  PAYMENT_METHOD = 'PAYMENT_METHOD',
+  CHECKOUT = 'CHECKOUT',
 }
 
 export function AddProductAction(item: Item) {
@@ -68,5 +71,37 @@ export type ExcludeItemType = {
   type: typeof ActionTypes.EXCLUDE_ITEM
   payload: {
     itemId: number
+  }
+}
+
+export function CheckOutAction(address: Address) {
+  return {
+    type: ActionTypes.CHECKOUT,
+    payload: {
+      address,
+    },
+  }
+}
+
+export type CheckOutType = {
+  type: typeof ActionTypes.CHECKOUT
+  payload: {
+    address: Address
+  }
+}
+
+export function PaymentMethodAction(paymentMethod: string) {
+  return {
+    type: ActionTypes.PAYMENT_METHOD,
+    payload: {
+      paymentMethod,
+    },
+  }
+}
+
+export type PaymentMethodType = {
+  type: typeof ActionTypes.PAYMENT_METHOD
+  payload: {
+    paymentMethod: string
   }
 }

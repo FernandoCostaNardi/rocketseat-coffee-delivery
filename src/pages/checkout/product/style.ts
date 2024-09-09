@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { typography } from '../../../../styles/themes/font'
+import { typography } from '../../../styles/themes/font'
 
 export const ProductContainer = styled.article`
   display: grid;
@@ -52,7 +52,7 @@ export const Actions = styled.div`
 
 export const RemoveButton = styled.button`
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   widht: 5.69rem;
   height: 2rem;
@@ -62,7 +62,6 @@ export const RemoveButton = styled.button`
   cursor: pointer;
   margin-left: 0.5rem;
 
-  ${typography.fonts.buttonM}
   background: ${(props) => props.theme['base-button']};
   color: ${(props) => props.theme['base-text']};
 
@@ -71,7 +70,6 @@ export const RemoveButton = styled.button`
   }
 
   svg {
-    margin-right: 0.25rem;
     color: ${(props) => props.theme.purple};
   }
 `

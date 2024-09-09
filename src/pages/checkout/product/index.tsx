@@ -1,5 +1,5 @@
 import { Trash } from 'phosphor-react'
-import { Product as ProductInterface } from './../../../../interfaces/Product'
+import { Product as ProductInterface } from '../../../interfaces/Product'
 import {
   Actions,
   Price,
@@ -8,9 +8,9 @@ import {
   RemoveButton,
   Title,
 } from './style'
-import { InputNumber } from '../../../../components/form/input-number'
+import { InputNumber } from '../../../components/form/input-number'
 import { useContext } from 'react'
-import { CartContext } from '../../../../context/CartContextProvider'
+import { CartContext } from '../../../context/CartContextProvider'
 
 interface ProductProps {
   product: ProductInterface

@@ -8,8 +8,12 @@ import {
   OrderInfoIconTime,
   OrderInfoIllustation,
 } from './style'
+import { useContext } from 'react'
+import { CartContext } from '../../../context/CartContextProvider'
 
 export function OrderInfo() {
+  const { cartStateData } = useContext(CartContext)
+  const { address, paymentMethod } = cartStateData
   return (
     <OrderInfoContainer>
       <OrderInfoDetails>
@@ -19,9 +23,14 @@ export function OrderInfo() {
           </OrderInfoIconLocale>
           <div>
             <p>
-              Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+              Entrega em{' '}
+              <strong>
+                {address?.street}, {address?.number}
+              </strong>
             </p>
-            <span>Farrapos - Porto Alegre, RS</span>
+            <span>
+              {address?.neighborhood} - {address?.city}, {address?.state}
+            </span>
           </div>
         </article>
 
@@ -44,7 +53,7 @@ export function OrderInfo() {
           <div>
             <p>Pagamentos na entrega</p>
             <span>
-              <strong>Cartão de Crédito</strong>
+              <strong>{paymentMethod}</strong>
             </span>
           </div>
         </article>

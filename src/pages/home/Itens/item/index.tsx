@@ -54,7 +54,13 @@ export function Item({ product }: ItemProps) {
       <CartContainer>
         <Price>
           <span>R$</span>
-          <p>{product.price}</p>
+          <p>
+            {new Intl.NumberFormat('pt-br', {
+              style: 'decimal',
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            }).format(product.price)}
+          </p>
         </Price>
         <InputNumberContainer>
           <InputNumber

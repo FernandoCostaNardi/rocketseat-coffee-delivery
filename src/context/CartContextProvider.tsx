@@ -1,19 +1,25 @@
 import { createContext, ReactNode, useReducer } from 'react'
 import { Item } from '../interfaces/Item'
+import { Address } from '../interfaces/Address'
 import { cartReducer } from './../reducers/cart/reducer'
 import {
   AddProductAction,
   IncrementItemQuantityAction,
   DecrementItemQuantityAction,
   ExcludeItemAction,
+  CheckOutAction,
+  PaymentMethodAction,
 } from '../reducers/cart/actions'
+import { CartState } from '../interfaces/Cart'
 
 interface CartContextType {
-  items: Item[]
+  cartStateData: CartState
   addItem: (item: Item) => void
   IncrementItemQuantity: (itemId: number) => void
   DecrementItemQuantity: (itemId: number) => void
   excludeItem: (itemId: number) => void
+  checkOut: (Address: Address) => void
+  paymentMethodCheckOut: (paymentMethod: string) => void
 }
 
 // Criando o contexto
@@ -27,7 +33,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartState, dispatch] = useReducer(
     cartReducer,
     {
-      items: [],
+      cartStateData: [],
     },
     (cartState) => {
       const storedStateAsJSON = localStorage.getItem(
@@ -58,14 +64,24 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(ExcludeItemAction(itemId))
   }
 
+  function checkOut(Address: Address) {
+    dispatch(CheckOutAction(Address))
+  }
+
+  function paymentMethodCheckOut(paymentMethod: string) {
+    dispatch(PaymentMethodAction(paymentMethod))
+  }
+
   return (
     <CartContext.Provider
       value={{
-        items: cartState.items,
+        cartStateData: cartState,
         addItem,
         IncrementItemQuantity,
         DecrementItemQuantity,
         excludeItem,
+        checkOut,
+        paymentMethodCheckOut,
       }}
     >
       {children}

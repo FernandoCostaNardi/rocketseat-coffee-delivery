@@ -1,50 +1,98 @@
-# React + TypeScript + Vite
+# Rocketseat Coffee Delivery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
 
-Currently, two official plugins are available:
+## Índice
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Rocketseat Coffee Delivery](#rocketseat-coffee-delivery)
+  - [Índice](#índice)
+  - [Sobre](#sobre)
+  - [Instalação](#instalação)
+  - [Uso](#uso)
+    - [Adicionar Produtos ao Carrinho](#adicionar-produtos-ao-carrinho)
+    - [Finalizar Compra](#finalizar-compra)
+  - [Contribuição](#contribuição)
+  - [Licença](#licença)
+  - [Contato](#contato)
 
-## Expanding the ESLint configuration
+## Sobre
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Rocketseat Coffee Delivery é um projeto de e-commerce para venda de café desenvolvido com React, TypeScript e Vite. Este projeto tem como objetivo proporcionar uma experiência de compra rápida e intuitiva para os usuários.
 
-- Configure the top-level `parserOptions` property like this:
+## Instalação
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Siga os passos abaixo para configurar o projeto localmente:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Clone o repositório:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   ```bash
+   git clone https://github.com/seu-usuario/rocketseat-coffee-delivery.git
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+2. Navegue até o diretório do projeto:
+
+   ```bash
+   cd rocketseat-coffee-delivery
+   ```
+
+3. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+4. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm start
+   ```
+
+## Uso
+
+Após iniciar o servidor de desenvolvimento, você pode acessar o aplicativo no seu navegador em `http://localhost:3000`.
+
+### Adicionar Produtos ao Carrinho
+
+1. Navegue pela lista de produtos disponíveis.
+2. Clique no botão "Adicionar ao Carrinho" para adicionar o produto desejado ao carrinho.
+
+### Finalizar Compra
+
+1. Clique no ícone do carrinho para visualizar os produtos adicionados.
+2. Preencha as informações de entrega e pagamento.
+3. Clique no botão "Finalizar Compra" para concluir a compra.
+
+## Contribuição
+
+Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
+
+1. Faça um fork do projeto.
+2. Crie uma nova branch:
+   ```bash
+   git checkout -b feature/nova-funcionalidade
+   ```
+3. Faça suas alterações e commit:
+   ```bash
+   git commit -m 'Adiciona nova funcionalidade'
+   ```
+4. Envie para o repositório remoto:
+   ```bash
+   git push origin feature/nova-funcionalidade
+   ```
+5. Abra um Pull Request.
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## Contato
+
+Para dúvidas ou suporte, entre em contato:
+
+- Nome: Fernando Costa Nardi
+- Email: fc-nardi@hotmail.com
+- GitHub: [Fernando Nardi](https://github.com/FernandoCostaNard)
+
+---
+
+Feito com ❤️ por [Fernando Nardi](https://github.com/FernandoCostaNard)

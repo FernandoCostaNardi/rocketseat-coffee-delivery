@@ -6,6 +6,7 @@ export function cartReducer(state: CartState, action: any) {
   switch (action.type) {
     case ActionTypes.ADD_PRODUCT:
       return produce(state, (draft) => {
+        draft.items = draft.items || []
         const existentItem = draft.items.find(
           (item) => item.productId === action.payload.item.productId
         )
@@ -45,6 +46,14 @@ export function cartReducer(state: CartState, action: any) {
         if (itemIndex !== -1) {
           draft.items.splice(itemIndex, 1)
         }
+      })
+    case ActionTypes.CHECKOUT:
+      return produce(state, (draft) => {
+        draft.address = action.payload.address
+      })
+    case ActionTypes.PAYMENT_METHOD:
+      return produce(state, (draft) => {
+        draft.paymentMethod = action.payload.paymentMethod
       })
     default:
       return state

@@ -1,8 +1,9 @@
-import {
+import React, {
   FocusEvent,
   HTMLAttributes,
   InputHTMLAttributes,
   useState,
+  forwardRef,
 } from 'react'
 import { Box, InputContainer } from './style'
 
@@ -16,43 +17,53 @@ interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export function InputText({
-  type,
-  placeholder,
-  name,
-  value,
-  optional,
-  containerProps,
-  onFocus,
-  onBlur,
-  ...rest
-}: InputTextProps) {
-  const [isFocused, setIsFocused] = useState(false)
+const InputText = forwardRef<HTMLInputElement, InputTextProps>(
+  (
+    {
+      type,
+      placeholder,
+      name,
+      value,
+      optional,
+      containerProps,
+      onFocus,
+      onBlur,
+      ...rest
+    },
+    ref
+  ) => {
+    const [isFocused, setIsFocused] = useState(false)
 
-  function handleFocus(event: FocusEvent<HTMLInputElement, Element>) {
-    setIsFocused(true)
-    onFocus?.(event)
+    function handleFocus(event: FocusEvent<HTMLInputElement, Element>) {
+      setIsFocused(true)
+      onFocus?.(event)
+    }
+
+    function handleBlur(event: FocusEvent<HTMLInputElement, Element>) {
+      setIsFocused(false)
+      onBlur?.(event)
+    }
+
+    return (
+      <Box {...containerProps}>
+        <InputContainer data-state={isFocused ? 'focused' : 'blurred'}>
+          <input
+            type={type}
+            placeholder={placeholder}
+            name={name}
+            value={value}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            ref={ref}
+            {...rest}
+          />
+          {optional ? <span>Opcional</span> : null}
+        </InputContainer>
+      </Box>
+    )
   }
+)
 
-  function handleBlur(event: FocusEvent<HTMLInputElement, Element>) {
-    setIsFocused(false)
-    onBlur?.(event)
-  }
+InputText.displayName = 'InputText'
 
-  return (
-    <Box {...containerProps}>
-      <InputContainer data-state={isFocused ? 'focused' : 'blurred'}>
-        <input
-          type={type}
-          placeholder={placeholder}
-          name={name}
-          value={value}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          {...rest}
-        />
-        {optional ? <span>Opcional</span> : null}
-      </InputContainer>
-    </Box>
-  )
-}
+export { InputText }
